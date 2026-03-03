@@ -71,8 +71,13 @@
 
 [data-theme="dark"] .global-bg {
     opacity: 0.9;
-    filter: brightness(0.4) saturate(0.85);
-    /* Dims the single image naturally for dark mode */
+    filter: brightness(0.8) saturate(0.85);
+    /* Slightly less dimming since overlay adds darkness */
+}
+
+[data-theme="dark"] .global-bg::after {
+    background: rgba(18, 18, 18, 0.6);
+    /* Dark translucent overlay */
 }
 
 /* --- Reset & Base --- */
@@ -152,7 +157,8 @@ h6 {
 
 .body-text {
     font-size: clamp(1rem, 1.2vw, 1.25rem);
-    color: rgba(51, 51, 51, 0.8);
+    color: var(--clr-text);
+    opacity: 0.85;
     max-width: 500px;
     margin-bottom: var(--space-md);
 }
@@ -310,10 +316,21 @@ h6 {
     background-position: center;
     background-repeat: no-repeat;
     z-index: -2;
-    opacity: 0.85;
-    /* Bright and luxurious for light mode */
+    opacity: 1;
     filter: brightness(1) saturate(1);
     transition: filter var(--transition-slow), opacity var(--transition-slow);
+}
+
+.global-bg::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(249, 248, 246, 0.65);
+    /* Translucent light overlay ensures legibility */
+    transition: background var(--transition-slow);
 }
 
 /* --- Layouts & Sections --- */
@@ -816,8 +833,7 @@ h6 {
     .glass-panel {
         max-width: 100%;
         text-align: center;
-        background: rgba(255, 255, 255, 0.6);
-        /* Slightly more opaque on mobile for readability */
+        /* Removed hardcoded background color to respect variables and fix dark mode mobile bug */
     }
 
     .align-left .glass-panel,
@@ -843,5 +859,29 @@ h6 {
     .wa-menu {
         width: calc(100vw - 3rem);
         max-width: 320px;
+    }
+
+    /* --- Mobile Footer Alignment --- */
+    .footer-grid {
+        flex-direction: column;
+        align-items: center;
+        gap: var(--space-xl);
+    }
+
+    .footer-col {
+        align-items: center;
+        text-align: center;
+        width: 100%;
+    }
+
+    .footer-manifesto {
+        margin: 0 auto;
+    }
+
+    .footer-bottom {
+        flex-direction: column-reverse;
+        justify-content: center;
+        gap: var(--space-md);
+        text-align: center;
     }
 }
