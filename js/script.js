@@ -1,167 +1,149 @@
+/**
+ * Shree Ashtayog - Vanilla JS Interactions
+ */
+
 document.addEventListener('DOMContentLoaded', () => {
 
-    /* ===============================================
-       1. Sticky Header & Scroll To Top Visibility
-       =============================================== */
-    const header = document.getElementById('header');
-    const scrollBtn = document.getElementById('scrollToTop');
+    // --- Current Year in Footer ---
+    const yearEl = document.getElementById('current-year');
+    if (yearEl) {
+        yearEl.textContent = new Date().getFullYear();
+    }
 
+    // --- Navigation Background on Scroll ---
+    const nav = document.querySelector('.site-nav');
     window.addEventListener('scroll', () => {
         if (window.scrollY > 50) {
-            header.classList.add('scrolled');
+            nav.classList.add('scrolled');
         } else {
-            header.classList.remove('scrolled');
-        }
-
-        if (window.scrollY > 500) {
-            scrollBtn.classList.add('visible');
-        } else {
-            scrollBtn.classList.remove('visible');
+            nav.classList.remove('scrolled');
         }
     });
 
-    scrollBtn.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
+    // --- Intersection Observer for Content Reveal ---
+    const revealElements = document.querySelectorAll('.reveal');
 
-    /* ===============================================
-       2. Mobile Hamburger Menu Toggle
-       =============================================== */
-    const hamburger = document.querySelector('.hamburger');
-    const navLinks = document.querySelector('.nav-links');
-    const navItems = document.querySelectorAll('.nav-links a');
-
-    hamburger.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
-        const icon = hamburger.querySelector('i');
-        if (navLinks.classList.contains('active')) {
-            icon.classList.remove('fa-bars');
-            icon.classList.add('fa-times');
-        } else {
-            icon.classList.remove('fa-times');
-            icon.classList.add('fa-bars');
-        }
-    });
-
-    // Close menu when clicking a link
-    navItems.forEach(item => {
-        item.addEventListener('click', () => {
-            navLinks.classList.remove('active');
-            hamburger.querySelector('i').classList.remove('fa-times');
-            hamburger.querySelector('i').classList.add('fa-bars');
-        });
-    });
-
-    /* ===============================================
-       3. Intersection Observer (Fade-In Animations)
-       =============================================== */
-    const faders = document.querySelectorAll('.fade-in');
-
-    const appearOptions = {
-        threshold: 0.15,
-        rootMargin: "0px 0px -50px 0px"
+    const revealOptions = {
+        root: null,
+        rootMargin: '0px 0px -15% 0px', // Trigger slightly before the element enters the viewport completely
+        threshold: 0.1
     };
 
-    const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+    const revealObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
-            if (!entry.isIntersecting) return;
-            entry.target.classList.add('appear');
-            observer.unobserve(entry.target);
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+                observer.unobserve(entry.target); // Stop observing once revealed
+            }
         });
-    }, appearOptions);
+    }, revealOptions);
 
-    faders.forEach(fader => {
-        appearOnScroll.observe(fader);
+    revealElements.forEach(el => {
+        revealObserver.observe(el);
     });
 
-    /* ===============================================
-       4. Lightbox Gallery (Pure JS)
-       =============================================== */
-    const galleryItems = document.querySelectorAll('.gallery-item');
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightbox-img');
-    const closeLightboxBtn = document.querySelector('.close-lightbox');
+    // --- Parallax Effect ---
+    // Vanilla JS Parallax calculation using requestAnimationFrame for performance
+    const parallaxBgs = document.querySelectorAll('.parallax-bg');
+    let rAFScheduled = false;
 
-    galleryItems.forEach(item => {
-        item.addEventListener('click', () => {
-            const img = item.querySelector('img');
-            lightboxImg.src = img.src;
-            lightbox.classList.add('active');
+    function renderParallax() {
+        const scrolled = window.scrollY;
+
+        parallaxBgs.forEach(bg => {
+            // Adjust the multiplier (0.3) to change parallax speed. Lower is slower bg.
+            const speed = 0.3;
+            // Only calc if the section is approximately in view to save perf, though translate3d is hardware accelerated
+            const yPos = -(scrolled * speed);
+            bg.style.transform = `translate3d(0px, ${yPos}px, 0px)`;
         });
-    });
 
-    function closeLightbox() {
-        lightbox.classList.remove('active');
-        // Clear src after fade out
-        setTimeout(() => {
-            lightboxImg.src = '';
-        }, 300);
+        rAFScheduled = false;
     }
 
-    closeLightboxBtn.addEventListener('click', closeLightbox);
-    
-    // Close on outside click
-    lightbox.addEventListener('click', (e) => {
-        if (e.target === lightbox) {
-            closeLightbox();
+    window.addEventListener('scroll', () => {
+        if (!rAFScheduled) {
+            requestAnimationFrame(renderParallax);
+            rAFScheduled = true;
         }
     });
 
-    // Esc key support
+    // Initial call to set positions on load
+    renderParallax();
+
+
+    // --- Floating Whatsapp Button Logic ---
+    const waWidget = document.getElementById('wa-widget');
+    const waToggleBtn = document.getElementById('wa-toggle-btn');
+    const waMenu = document.getElementById('wa-menu');
+    const waMainIcon = waToggleBtn.querySelector('.wa-main-icon');
+    const waCloseIcon = waToggleBtn.querySelector('.wa-close-icon');
+
+    function toggleWaMenu() {
+        const isExpanded = waToggleBtn.getAttribute('aria-expanded') === 'true';
+
+        if (isExpanded) {
+            // Close menu
+            waToggleBtn.setAttribute('aria-expanded', 'false');
+            waToggleBtn.classList.remove('active');
+            waMenu.classList.remove('expanded');
+            waMenu.setAttribute('aria-hidden', 'true');
+
+            // Icon swap animation
+            waMainIcon.style.opacity = '1';
+            waMainIcon.style.transform = 'scale(1) rotate(0deg)';
+            waMainIcon.style.display = 'block';
+
+            waCloseIcon.style.opacity = '0';
+            waCloseIcon.style.transform = 'scale(0) rotate(-90deg)';
+            setTimeout(() => {
+                if (waToggleBtn.getAttribute('aria-expanded') === 'false') {
+                    waCloseIcon.style.display = 'none';
+                }
+            }, 300);
+
+        } else {
+            // Open menu
+            waToggleBtn.setAttribute('aria-expanded', 'true');
+            waToggleBtn.classList.add('active');
+            waMenu.classList.add('expanded');
+            waMenu.setAttribute('aria-hidden', 'false');
+
+            // Icon swap animation
+            waMainIcon.style.opacity = '0';
+            waMainIcon.style.transform = 'scale(0) rotate(90deg)';
+            setTimeout(() => { waMainIcon.style.display = 'none'; }, 300);
+
+            waCloseIcon.style.display = 'block';
+            // Slight delay to allow display block to apply before animating opacity
+            requestAnimationFrame(() => {
+                waCloseIcon.style.opacity = '1';
+                waCloseIcon.style.transform = 'scale(1) rotate(0deg)';
+            });
+        }
+    }
+
+    // Click on toggle button
+    waToggleBtn.addEventListener('click', (e) => {
+        e.stopPropagation(); // prevent document click listener from firing immediately
+        toggleWaMenu();
+    });
+
+    // Click outside to close
+    document.addEventListener('click', (e) => {
+        const isExpanded = waToggleBtn.getAttribute('aria-expanded') === 'true';
+        if (isExpanded && !waWidget.contains(e.target)) {
+            toggleWaMenu();
+        }
+    });
+
+    // Close on escape key
     document.addEventListener('keydown', (e) => {
-        if (e.key === "Escape" && lightbox.classList.contains('active')) {
-            closeLightbox();
+        const isExpanded = waToggleBtn.getAttribute('aria-expanded') === 'true';
+        if (e.key === 'Escape' && isExpanded) {
+            toggleWaMenu();
+            waToggleBtn.focus(); // Return focus for accessibility
         }
     });
-
-    /* ===============================================
-       5. Auto-sliding Testimonials
-       =============================================== */
-    const slides = document.querySelectorAll('.testimonial-slider .slide');
-    let currentSlide = 0;
-    const slideInterval = 5000; // 5 seconds
-
-    function nextSlide() {
-        slides[currentSlide].classList.remove('active');
-        currentSlide = (currentSlide + 1) % slides.length;
-        slides[currentSlide].classList.add('active');
-    }
-
-    if(slides.length > 0) {
-        setInterval(nextSlide, slideInterval);
-    }
-
-    /* ===============================================
-       6. Contact Form Validation (Basic)
-       =============================================== */
-    const contactForm = document.getElementById('contact-form');
-    
-    if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            
-            // Basic fields grab
-            const name = document.getElementById('name').value.trim();
-            const phone = document.getElementById('phone').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const message = document.getElementById('message').value.trim();
-            
-            // Simple validation
-            if (!name || !phone || !email || !message) {
-                alert('Please fill in all the fields.');
-                return;
-            }
-            
-            // Phone length check purely as an example
-            if (phone.length < 10) {
-                alert('Please enter a valid phone number.');
-                return;
-            }
-
-            // Success action
-            alert(`Thank you, ${name}! Your message has been sent successfully. We will contact you soon.`);
-            contactForm.reset();
-        });
-    }
 
 });
