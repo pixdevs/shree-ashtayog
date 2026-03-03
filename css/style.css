@@ -234,10 +234,10 @@ h6 {
     -webkit-mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
 }
 
-/* Simulated Image placeholers using soft gradients/colors since we don't have real assets */
+/* Simulated Image placeholders using soft gradients/colors since we don't have real assets */
 .hero-bg {
-    background-image: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%);
-    opacity: 0.3;
+    background-image: url('../images/hero_yoga_nature_1772561921639.png');
+    opacity: 0.5;
 }
 
 .philosophy-bg {
@@ -245,25 +245,28 @@ h6 {
 }
 
 .movement-bg {
-    background-image: linear-gradient(to right, #fa709a 0%, #fee140 100%);
-    opacity: 0.15;
+    background-image: url('../images/movement_fitness_1772561957846.png');
+    opacity: 0.5;
 }
 
 .discipline-bg {
-    background-color: #E2E4E1;
+    background-image: url('../images/discipline_meditation_1772561973805.png');
+    opacity: 0.5;
 }
 
 .healing-bg {
-    background-image: linear-gradient(to top, #accbee 0%, #e7f0fd 100%);
-    opacity: 0.4;
+    background-image: url('../images/naturopathy_healing_1772561940907.png');
+    opacity: 0.5;
 }
 
 .community-bg {
-    background-color: #F1EBE5;
+    background-image: url('../images/community_wellness_1772561991216.png');
+    opacity: 0.4;
 }
 
 .invitation-bg {
-    background-color: #E9EAE8;
+    background-image: url('../images/invitation_serene_1772562006813.png');
+    opacity: 0.6;
     mask-image: none;
     -webkit-mask-image: none;
 }
