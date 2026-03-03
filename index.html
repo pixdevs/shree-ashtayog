@@ -32,15 +32,39 @@
                 <a href="#healing">Healing</a>
                 <a href="#community">Community</a>
             </div>
-            <button class="nav-cta">Join Us</button>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle Dark Mode">
+                    <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+                <button class="nav-cta">Join Us</button>
+            </div>
         </div>
     </nav>
 
     <!-- Main Content Flow -->
     <main>
+        <!-- Global Parallax Background -->
+        <div class="global-bg" id="global-bg"></div>
+
         <!-- Hero Section -->
         <section id="hero" class="journey-section">
-            <div class="parallax-bg hero-bg"></div>
             <div class="content-wrapper">
                 <div class="glass-panel reveal stagger">
                     <span class="eyebrow">A Modern Spiritual Journey</span>
@@ -53,7 +77,6 @@
 
         <!-- Philosophy Section -->
         <section id="philosophy" class="journey-section">
-            <div class="parallax-bg philosophy-bg"></div>
             <div class="content-wrapper align-right">
                 <div class="glass-panel reveal slide-up">
                     <span class="eyebrow">01. Philosophy</span>
@@ -67,7 +90,6 @@
 
         <!-- Movement Section -->
         <section id="movement" class="journey-section">
-            <div class="parallax-bg movement-bg"></div>
             <div class="content-wrapper align-left">
                 <div class="glass-panel reveal slide-up">
                     <span class="eyebrow">02. Movement</span>
@@ -81,7 +103,6 @@
 
         <!-- Discipline Section -->
         <section id="discipline" class="journey-section">
-            <div class="parallax-bg discipline-bg"></div>
             <div class="content-wrapper align-center">
                 <div class="glass-panel reveal slide-up">
                     <span class="eyebrow">03. Discipline</span>
@@ -95,7 +116,6 @@
 
         <!-- Healing Section -->
         <section id="healing" class="journey-section">
-            <div class="parallax-bg healing-bg"></div>
             <div class="content-wrapper align-right">
                 <div class="glass-panel reveal slide-up">
                     <span class="eyebrow">04. Healing</span>
@@ -109,7 +129,6 @@
 
         <!-- Community Section -->
         <section id="community" class="journey-section">
-            <div class="parallax-bg community-bg"></div>
             <div class="content-wrapper align-left">
                 <div class="glass-panel reveal slide-up">
                     <span class="eyebrow">05. Community</span>
@@ -120,11 +139,39 @@
             </div>
         </section>
 
+        <!-- Founders Section -->
+        <section id="founders" class="journey-section">
+            <div class="content-wrapper align-center">
+                <div class="glass-panel reveal slide-up" style="max-width: 900px;">
+                    <span class="eyebrow">06. Our Guides</span>
+                    <h2 class="section-title">Meet the Founders</h2>
+                    <p class="body-text">Guided by devotion and discipline.</p>
+
+                    <div class="founder-grid">
+                        <div class="founder-card">
+                            <div class="founder-image-wrapper">
+                                <img src="images/founder_vishnu.png" alt="Vishnu Chakravarthy" class="founder-image">
+                            </div>
+                            <h3>Vishnu Chakravarthy</h3>
+                            <p class="founder-role">Yoga & Fitness Expert</p>
+                        </div>
+                        <div class="founder-card">
+                            <div class="founder-image-wrapper">
+                                <img src="images/founder_amruta.png" alt="Amruta Sinkar" class="founder-image">
+                            </div>
+                            <h3>Amruta Sinkar</h3>
+                            <p class="founder-role">Naturopathy & Wellness Guide</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Invitation Section -->
         <section id="invitation" class="journey-section">
-            <div class="parallax-bg invitation-bg"></div>
             <div class="content-wrapper align-center">
                 <div class="glass-panel reveal slide-up">
+                    <span class="eyebrow">07. Connect</span>
                     <h2 class="section-title">Begin Your Journey</h2>
                     <p class="body-text">Step into a space designed for your evolution.</p>
                     <button class="primary-btn">Schedule a Visit</button>
@@ -188,16 +235,61 @@
     <!-- Footer -->
     <footer class="site-footer">
         <div class="footer-content">
-            <div class="footer-logo">Shree Ashtayog</div>
-            <p class="footer-manifesto">A Sanctuary for Contemporary Fitness & Mindful Living</p>
-            <div class="footer-links">
-                <a href="#philosophy">Philosophy</a>
-                <a href="#movement">Movement</a>
-                <a href="#healing">Healing</a>
-                <a href="#">Instagram</a>
+            <div class="footer-grid">
+
+                <div class="footer-col brand-col">
+                    <a href="#" class="logo footer-logo">Shree Ashtayog</a>
+                    <p class="footer-manifesto">Elevating mind, body, and spirit through integrated practices.</p>
+                </div>
+
+                <div class="footer-col contact-col">
+                    <h4 class="footer-heading">Connect With Us</h4>
+                    <p class="footer-contact"><a href="tel:+918122236062">81222 36062</a></p>
+                    <p class="footer-contact"><a href="tel:+918983001858">89830 01858</a></p>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/modern_yogi_gymnast/" target="_blank"
+                            rel="noopener noreferrer" aria-label="Vishnu Instagram">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="social-icon">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                        </a>
+                        <a href="https://www.instagram.com/yogavishnuchakravarthy/" target="_blank"
+                            rel="noopener noreferrer" aria-label="Amruta Instagram">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="social-icon">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-col map-col">
+                    <h4 class="footer-heading">Visit Us</h4>
+                    <p class="footer-contact">Sangamner, Pune, Maharashtra</p>
+                    <div class="map-container">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d119866.69998135891!2d74.12071221799275!3d19.576571991206173!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bdd00eefb3b28b7%3A0xe67db74a38243!2sSangamner%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1714000000000!5m2!1sen!2sin"
+                            width="100%" height="150"
+                            style="border:0; border-radius: 12px; filter: grayscale(50%) contrast(100%);"
+                            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+
             </div>
-            <div class="footer-legal">
-                &copy; <span id="current-year"></span> Shree Ashtayog. All Rights Reserved.
+
+            <div class="footer-bottom">
+                <p>&copy; <span id="current-year"></span> Shree Ashtayog. All Rights Reserved.</p>
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
             </div>
         </div>
     </footer>

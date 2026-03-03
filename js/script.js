@@ -10,6 +10,28 @@ document.addEventListener('DOMContentLoaded', () => {
         yearEl.textContent = new Date().getFullYear();
     }
 
+    // --- Theme Toggle Logic ---
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const rootEl = document.documentElement;
+
+    // Check local storage or system preference
+    const savedTheme = localStorage.getItem('theme');
+    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+        rootEl.setAttribute('data-theme', 'dark');
+    } else {
+        rootEl.setAttribute('data-theme', 'light');
+    }
+
+    themeToggleBtn.addEventListener('click', () => {
+        const currentTheme = rootEl.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+        rootEl.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+    });
+
     // --- Navigation Background on Scroll ---
     const nav = document.querySelector('.site-nav');
     window.addEventListener('scroll', () => {
@@ -42,34 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
         revealObserver.observe(el);
     });
 
-    // --- Parallax Effect ---
-    // Vanilla JS Parallax calculation using requestAnimationFrame for performance
-    const parallaxBgs = document.querySelectorAll('.parallax-bg');
-    let rAFScheduled = false;
-
-    function renderParallax() {
-        const scrolled = window.scrollY;
-
-        parallaxBgs.forEach(bg => {
-            // Adjust the multiplier (0.3) to change parallax speed. Lower is slower bg.
-            const speed = 0.3;
-            // Only calc if the section is approximately in view to save perf, though translate3d is hardware accelerated
-            const yPos = -(scrolled * speed);
-            bg.style.transform = `translate3d(0px, ${yPos}px, 0px)`;
-        });
-
-        rAFScheduled = false;
-    }
-
-    window.addEventListener('scroll', () => {
-        if (!rAFScheduled) {
-            requestAnimationFrame(renderParallax);
-            rAFScheduled = true;
-        }
-    });
-
-    // Initial call to set positions on load
-    renderParallax();
+    // Parallax removed in favor of a static, full-height viewport background
 
 
     // --- Floating Whatsapp Button Logic ---
