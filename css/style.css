@@ -1106,26 +1106,74 @@ h6 {
     gap: 0.8rem;
 }
 
-/* --- Video Carousel (Featured Sessions) --- */
+/* --- Video Carousel (Featured Sessions API) --- */
+.sessions-gallery {
+    width: 100%;
+}
+
+.carousel-wrapper {
+    --card-w: 350px;
+    --thumb-h: calc(var(--card-w) * 9 / 16);
+    position: relative;
+    width: 100%;
+    /* Create a stacking context so absolute indicators overlay rows */
+    z-index: 1; 
+}
+
+/* Subtle Gradient Scroll Indicators */
+.scroll-indicator {
+    position: absolute;
+    top: 0;
+    height: var(--thumb-h);
+    width: 40px; /* Minimized width across all views */
+    display: flex;
+    align-items: center;
+    z-index: 10;
+    pointer-events: none; /* Let user swipe through it */
+    color: rgba(255, 255, 255, 0.7); /* Brighter, sharper icon */
+}
+
+.scroll-indicator svg {
+    width: 20px; /* Smaller, more elegant arrows */
+    height: 20px;
+}
+
+.indicator-left {
+    left: 0;
+    justify-content: flex-start;
+    padding-left: 5px;
+    background: linear-gradient(to right, rgba(18, 18, 18, 0.7) 0%, rgba(18, 18, 18, 0) 100%);
+    border-top-left-radius: 16px;
+    border-bottom-left-radius: 16px;
+}
+
+.indicator-right {
+    right: 0;
+    justify-content: flex-end;
+    padding-right: 5px;
+    background: linear-gradient(to left, rgba(18, 18, 18, 0.7) 0%, rgba(18, 18, 18, 0) 100%);
+    border-top-right-radius: 16px;
+    border-bottom-right-radius: 16px;
+}
+
 .video-carousel {
     display: flex;
     overflow-x: auto;
     gap: var(--space-lg);
-    padding-bottom: var(--space-md);
+    padding-bottom: var(--space-sm);
     scroll-snap-type: x mandatory;
     scrollbar-width: none;
-    /* Firefox */
     -ms-overflow-style: none;
-    /* IE/Edge */
 }
+
+/* Optional classes can be added here if needed in the future */
 
 .video-carousel::-webkit-scrollbar {
     display: none;
-    /* Chrome/Safari */
 }
 
 .video-card {
-    flex: 0 0 350px;
+    flex: 0 0 var(--card-w);
     scroll-snap-align: start;
     display: flex;
     flex-direction: column;
@@ -1349,6 +1397,36 @@ h6 {
 
     .content-wrapper {
         justify-content: center;
+    }
+
+    .align-left {
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .sessions-gallery {
+        width: 100vw;
+        margin-left: calc(-50vw + 50%); /* Full bleed breakout */
+    }
+
+    .carousel-wrapper {
+        --card-w: 80vw; /* Scales properly and peeks at the next card */
+    }
+
+    .video-carousel {
+        padding-left: calc(50vw - (var(--card-w) / 2));
+        padding-right: calc(50vw - (var(--card-w) / 2));
+    }
+
+    .video-card {
+        scroll-snap-align: center; /* Snap squarely in the middle */
+    }
+
+    .scroll-indicator {
+        width: 30px; /* Ultra slim on mobile */
     }
 
     .glass-panel {
