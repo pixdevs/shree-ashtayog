@@ -40,22 +40,24 @@
 
     <!-- Main Content Flow -->
     <main>
-        <!-- Global Parallax Background -->
-        <div class="global-bg" id="global-bg"></div>
+        <!-- Animated Flowing Curved Lines Background -->
+        <div class="flowing-bg">
+            <div class="bg-ring"></div>
+            <div class="bg-ring"></div>
+            <div class="bg-ring"></div>
+        </div>
 
         <!-- Hero Section -->
-        <section id="hero" class="journey-section hero-dynamic">
-            <div class="hero-video-bg">
-                <div class="video-overlay"></div>
-            </div>
-            <div class="content-wrapper align-center">
-                <div class="glass-panel reveal stagger hero-glass">
+        <section id="hero" class="journey-section" style="padding-top: 15vh;">
+            <div class="content-wrapper" style="flex-direction: column; align-items: center; width: 100%;">
+                
+                <!-- Hero Typography -->
+                <div class="hero-text-content reveal slide-up" style="max-width: 800px; text-align: center; margin-bottom: var(--space-lg);">
                     <span class="eyebrow">A Modern Spiritual Journey</span>
-                    <h1 class="statement-title">Find Your Flow</h1>
-                    <p class="body-text">Discover a curated sanctuary where contemporary fitness meets ancient wisdom.
-                    </p>
-
-                    <div class="flow-selector">
+                    <h1 class="statement-title" style="margin-bottom: var(--space-md);">Find Your Flow</h1>
+                    <p class="body-text" style="margin: 0 auto;">Discover a curated sanctuary where contemporary fitness meets ancient wisdom.</p>
+                    
+                    <div class="flow-selector" style="margin-top: var(--space-md);">
                         <p class="flow-prompt">What do you need today?</p>
                         <div class="flow-pills">
                             <button class="flow-pill active" data-target="movement">I want to Sweat</button>
@@ -64,13 +66,19 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Hero Floating Container -->
+                <div class="hero-image-container reveal slide-up" style="animation-delay: 0.2s;">
+                    <img src="images/hero_yoga_nature_1772561921639.png" alt="Shree Ashtayog Hero" class="hero-floating-img">
+                </div>
+
             </div>
         </section>
 
         <!-- Programs Section -->
         <section id="programs" class="journey-section">
             <div class="content-wrapper" style="flex-direction: column; width: 100%;">
-                <div class="align-center reveal slide-up" style="margin-bottom: var(--space-xl);">
+                <div class="align-center reveal slide-up" style="margin-bottom: var(--space-lg);">
                     <span class="eyebrow">02. Programs</span>
                     <h2 class="section-title">Explore Your Practice</h2>
                     <p class="body-text">Select a program that aligns with your daily needs and aspirations.</p>
@@ -139,7 +147,7 @@
         <!-- Featured Sessions (FWFG Inspired) -->
         <section id="sessions" class="journey-section">
             <div class="content-wrapper" style="flex-direction: column; width: 100%;">
-                <div class="align-left reveal slide-up" style="margin-bottom: var(--space-xl);">
+                <div class="align-left reveal slide-up" style="margin-bottom: var(--space-lg);">
                     <span class="eyebrow">03. Library</span>
                     <h2 class="section-title">Featured Sessions</h2>
                     <p class="body-text">Immerse yourself in our curated video library.</p>
@@ -281,7 +289,7 @@
         <!-- Community Section -->
         <section id="community" class="journey-section">
             <div class="content-wrapper" style="flex-direction: column; width: 100%;">
-                <div class="align-center reveal slide-up" style="margin-bottom: var(--space-xl);">
+                <div class="align-center reveal slide-up" style="margin-bottom: var(--space-lg);">
                     <span class="eyebrow">04. Community</span>
                     <h2 class="section-title">Together We Rise</h2>
                     <p class="body-text">A curated collective of mindful individuals.</p>
