@@ -10,28 +10,6 @@ document.addEventListener('DOMContentLoaded', () => {
         yearEl.textContent = new Date().getFullYear();
     }
 
-    // --- Theme Toggle Logic ---
-    const themeToggleBtn = document.getElementById('theme-toggle');
-    const rootEl = document.documentElement;
-
-    // Check local storage or system preference
-    const savedTheme = localStorage.getItem('theme');
-    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-    if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
-        rootEl.setAttribute('data-theme', 'dark');
-    } else {
-        rootEl.setAttribute('data-theme', 'light');
-    }
-
-    themeToggleBtn.addEventListener('click', () => {
-        const currentTheme = rootEl.getAttribute('data-theme');
-        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-
-        rootEl.setAttribute('data-theme', newTheme);
-        localStorage.setItem('theme', newTheme);
-    });
-
     // --- Navigation Background on Scroll ---
     const nav = document.querySelector('.site-nav');
     window.addEventListener('scroll', () => {
