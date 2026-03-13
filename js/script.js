@@ -141,4 +141,77 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // --- Find Your Flow Interaction ---
+    const flowPills = document.querySelectorAll('.flow-pill');
+    flowPills.forEach(pill => {
+        pill.addEventListener('click', () => {
+            // Remove active class from all
+            flowPills.forEach(p => p.classList.remove('active'));
+            // Add active class to clicked
+            pill.classList.add('active');
+            
+            // Scroll to the target section
+            const targetId = pill.getAttribute('data-target');
+            const targetSection = document.getElementById(targetId);
+            
+            if (targetSection) {
+                targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    });
+
+    // --- Dynamic Mobile Navigation active state ---
+    const sections = document.querySelectorAll('.journey-section');
+    const mobileNavItems = document.querySelectorAll('.mob-nav-item');
+
+    const navObserverOptions = {
+        root: null,
+        rootMargin: '-50% 0px -50% 0px', // Trigger exactly when section crosses the middle of viewport
+        threshold: 0
+    };
+
+    const navObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Remove active from all nav items
+                mobileNavItems.forEach(item => item.classList.remove('active'));
+                
+                // Construct href ID to look for
+                const currentId = entry.target.id;
+                
+                // If the section is 'philosophy', 'movement', etc., map to 'Programs' #programs link
+                let targetId = currentId;
+                if (['philosophy', 'movement', 'discipline', 'healing'].includes(currentId)) {
+                    targetId = 'programs';
+                }
+
+                // Find corresponding nav item
+                const activeNav = document.querySelector(`.mob-nav-item[href="#${targetId}"]`);
+                if (activeNav) {
+                    activeNav.classList.add('active');
+                }
+            }
+        });
+    }, navObserverOptions);
+
+    sections.forEach(section => {
+        navObserver.observe(section);
+    });
+
+    // --- Connect CTA Buttons to Invitation Section ---
+    const ctaButtons = [
+        document.querySelector('.nav-cta'), // Top Nav "Join Us"
+        ...document.querySelectorAll('.secondary-btn'), // "View Schedule" inside Founder Cards
+        document.querySelector('.primary-btn') // "Schedule a Visit" inside Invitation (scroll to contact sub for demo)
+    ].filter(Boolean); // Filter out any null if they don't exist
+
+    ctaButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+             const invitationSection = document.getElementById('invitation');
+             if(invitationSection) {
+                 invitationSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+             }
+        });
+    });
+
 });

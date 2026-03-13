@@ -64,77 +64,203 @@
         <div class="global-bg" id="global-bg"></div>
 
         <!-- Hero Section -->
-        <section id="hero" class="journey-section">
-            <div class="content-wrapper">
-                <div class="glass-panel reveal stagger">
-                    <span class="eyebrow">A Modern Spiritual Journey</span>
-                    <h1 class="statement-title">Breathe Into Presence</h1>
-                    <p class="body-text">Discover a curated sanctuary where contemporary fitness meets ancient wisdom.
-                        Experience movement without boundaries.</p>
-                </div>
+        <section id="hero" class="journey-section hero-dynamic">
+            <div class="hero-video-bg">
+                <div class="video-overlay"></div>
             </div>
-        </section>
-
-        <!-- Philosophy Section -->
-        <section id="philosophy" class="journey-section">
-            <div class="content-wrapper align-right">
-                <div class="glass-panel reveal slide-up">
-                    <span class="eyebrow">01. Philosophy</span>
-                    <h2 class="section-title">Rooted in Tradition,<br>Designed for Today.</h2>
-                    <p class="body-text">We believe in a fluid practice. One that doesn't cage you in dogma, but frees
-                        you through mindful movement. Our philosophy blends the rigorous lineage of Ashtanga with the
-                        intuitive flow of contemporary fitness.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Movement Section -->
-        <section id="movement" class="journey-section">
-            <div class="content-wrapper align-left">
-                <div class="glass-panel reveal slide-up">
-                    <span class="eyebrow">02. Movement</span>
-                    <h2 class="section-title">The Art of Flow</h2>
-                    <p class="body-text">More than a workout, it is an exploration of what your body is capable of. Soft
-                        transitions, deep alignments, and continuous spatial awareness create an experience that feels
-                        both athletic and deeply restorative.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Discipline Section -->
-        <section id="discipline" class="journey-section">
             <div class="content-wrapper align-center">
-                <div class="glass-panel reveal slide-up">
-                    <span class="eyebrow">03. Discipline</span>
-                    <h2 class="section-title">Quiet Strength</h2>
-                    <p class="body-text">True transformation requires dedication. We cultivate an environment that
-                        honors discipline while offering grace. Build resilience not just in your muscles, but in your
-                        entire nervous system.</p>
+                <div class="glass-panel reveal stagger hero-glass">
+                    <span class="eyebrow">A Modern Spiritual Journey</span>
+                    <h1 class="statement-title">Find Your Flow</h1>
+                    <p class="body-text">Discover a curated sanctuary where contemporary fitness meets ancient wisdom.
+                    </p>
+
+                    <div class="flow-selector">
+                        <p class="flow-prompt">What do you need today?</p>
+                        <div class="flow-pills">
+                            <button class="flow-pill active" data-target="movement">I want to Sweat</button>
+                            <button class="flow-pill" data-target="healing">I want to Heal</button>
+                            <button class="flow-pill" data-target="discipline">I want to Breathe</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Healing Section -->
-        <section id="healing" class="journey-section">
-            <div class="content-wrapper align-right">
-                <div class="glass-panel reveal slide-up">
-                    <span class="eyebrow">04. Healing</span>
-                    <h2 class="section-title">Restore & Return</h2>
-                    <p class="body-text">Stillness is as vital as motion. Journey inward to heal. Our somatic release
-                        practices and deep resonance relaxation techniques create space for profound physical and
-                        emotional integration.</p>
+        <!-- Programs Section -->
+        <section id="programs" class="journey-section">
+            <div class="content-wrapper" style="flex-direction: column; width: 100%;">
+                <div class="align-center reveal slide-up" style="margin-bottom: var(--space-xl);">
+                    <span class="eyebrow">02. Programs</span>
+                    <h2 class="section-title">Explore Your Practice</h2>
+                    <p class="body-text">Select a program that aligns with your daily needs and aspirations.</p>
+                </div>
+
+                <div class="programs-grid reveal stagger">
+                    <!-- Philosophy -->
+                    <div class="program-card" id="philosophy">
+                        <div class="card-bg"></div>
+                        <div class="card-content">
+                            <span class="program-tag">Foundation</span>
+                            <h3>Philosophy</h3>
+                            <p>Rooted in Tradition, Designed for Today. A fluid practice without dogma.</p>
+                            <button class="card-link">Explore <svg width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M5 12h14M12 5l7 7-7 7" />
+                                </svg></button>
+                        </div>
+                    </div>
+
+                    <!-- Movement -->
+                    <div class="program-card" id="movement">
+                        <div class="card-bg"></div>
+                        <div class="card-content">
+                            <span class="program-tag">Physical</span>
+                            <h3>Movement</h3>
+                            <p>The Art of Flow. Deep alignments and continuous spatial awareness.</p>
+                            <button class="card-link">Explore <svg width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M5 12h14M12 5l7 7-7 7" />
+                                </svg></button>
+                        </div>
+                    </div>
+
+                    <!-- Discipline -->
+                    <div class="program-card" id="discipline">
+                        <div class="card-bg"></div>
+                        <div class="card-content">
+                            <span class="program-tag">Mental</span>
+                            <h3>Discipline</h3>
+                            <p>Quiet Strength. Cultivate resilience in your muscles and nervous system.</p>
+                            <button class="card-link">Explore <svg width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M5 12h14M12 5l7 7-7 7" />
+                                </svg></button>
+                        </div>
+                    </div>
+
+                    <!-- Healing -->
+                    <div class="program-card" id="healing">
+                        <div class="card-bg"></div>
+                        <div class="card-content">
+                            <span class="program-tag">Restorative</span>
+                            <h3>Healing</h3>
+                            <p>Restore & Return. Somatic release and profound emotional integration.</p>
+                            <button class="card-link">Explore <svg width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M5 12h14M12 5l7 7-7 7" />
+                                </svg></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Sessions (FWFG Inspired) -->
+        <section id="sessions" class="journey-section">
+            <div class="content-wrapper" style="flex-direction: column; width: 100%;">
+                <div class="align-left reveal slide-up" style="margin-bottom: var(--space-xl);">
+                    <span class="eyebrow">03. Library</span>
+                    <h2 class="section-title">Featured Sessions</h2>
+                    <p class="body-text">Immerse yourself in our curated video library.</p>
+                </div>
+
+                <div class="video-carousel reveal stagger">
+                    <div class="video-card">
+                        <div class="video-thumbnail"
+                            style="background-image: url('images/wellness-bg.png'); filter: grayscale(20%);">
+                            <button class="play-btn" aria-label="Play Video">
+                                <svg viewBox="0 0 24 24" fill="currentColor" width="32" height="32">
+                                    <path d="M8 5v14l11-7z" />
+                                </svg>
+                            </button>
+                            <span class="video-duration">45 Min</span>
+                        </div>
+                        <div class="video-info">
+                            <span class="video-category">Vinyasa Flow</span>
+                            <h4>Morning Awakening</h4>
+                            <p>Start your day with intention and dynamic movement.</p>
+                        </div>
+                    </div>
+                    <div class="video-card">
+                        <div class="video-thumbnail"
+                            style="background-image: url('images/wellness-bg.png'); filter: grayscale(50%) sepia(20%);">
+                            <button class="play-btn" aria-label="Play Video">
+                                <svg viewBox="0 0 24 24" fill="currentColor" width="32" height="32">
+                                    <path d="M8 5v14l11-7z" />
+                                </svg>
+                            </button>
+                            <span class="video-duration">20 Min</span>
+                        </div>
+                        <div class="video-info">
+                            <span class="video-category">Meditation</span>
+                            <h4>Deep Resonance</h4>
+                            <p>A guided somatic release practice for profound healing.</p>
+                        </div>
+                    </div>
+                    <div class="video-card">
+                        <div class="video-thumbnail"
+                            style="background-image: url('images/wellness-bg.png'); filter: grayscale(10%) contrast(120%);">
+                            <button class="play-btn" aria-label="Play Video">
+                                <svg viewBox="0 0 24 24" fill="currentColor" width="32" height="32">
+                                    <path d="M8 5v14l11-7z" />
+                                </svg>
+                            </button>
+                            <span class="video-duration">60 Min</span>
+                        </div>
+                        <div class="video-info">
+                            <span class="video-category">Ashtanga</span>
+                            <h4>Primary Series</h4>
+                            <p>Rigorous lineage exploration for strength and discipline.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- Community Section -->
         <section id="community" class="journey-section">
-            <div class="content-wrapper align-left">
-                <div class="glass-panel reveal slide-up">
-                    <span class="eyebrow">05. Community</span>
+            <div class="content-wrapper" style="flex-direction: column; width: 100%;">
+                <div class="align-center reveal slide-up" style="margin-bottom: var(--space-xl);">
+                    <span class="eyebrow">04. Community</span>
                     <h2 class="section-title">Together We Rise</h2>
-                    <p class="body-text">You are not alone on this path. Connect with a curated collective of mindful
-                        individuals who share your commitment to growth, empathy, and conscious living.</p>
+                    <p class="body-text">A curated collective of mindful individuals.</p>
+                </div>
+
+                <div class="stories-marquee reveal stagger">
+                    <div class="story-card">
+                        <div class="story-header">
+                            <div class="wa-avatar">R</div>
+                            <div>
+                                <h5>Rohan Sharma</h5>
+                                <span class="story-meta">Ashtanga Practitioner</span>
+                            </div>
+                        </div>
+                        <p class="story-text">"The discipline and focus I've gained here transcend the physical
+                            practice. It's truly a sanctuary."</p>
+                    </div>
+                    <div class="story-card">
+                        <div class="story-header">
+                            <div class="wa-avatar alt-color">M</div>
+                            <div>
+                                <h5>Meera Desai</h5>
+                                <span class="story-meta">Healing & Somatics</span>
+                            </div>
+                        </div>
+                        <p class="story-text">"Amruta's guidance in somatic release changed my perspective on chronic
+                            pain. Deeply grateful."</p>
+                    </div>
+                    <div class="story-card">
+                        <div class="story-header">
+                            <div class="wa-avatar" style="background:var(--clr-text)">A</div>
+                            <div>
+                                <h5>Arjun Patel</h5>
+                                <span class="story-meta">Vinyasa Flow</span>
+                            </div>
+                        </div>
+                        <p class="story-text">"The blend of traditional lineage and modern science makes every session
+                            incredibly effective."</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -143,24 +269,44 @@
         <section id="founders" class="journey-section">
             <div class="content-wrapper align-center">
                 <div class="glass-panel reveal slide-up" style="max-width: 900px;">
-                    <span class="eyebrow">06. Our Guides</span>
+                    <span class="eyebrow">05. Our Guides</span>
                     <h2 class="section-title">Meet the Founders</h2>
-                    <p class="body-text">Guided by devotion and discipline.</p>
+                    <p class="body-text">Guided by devotion, discipline, and modern science.</p>
 
                     <div class="founder-grid">
-                        <div class="founder-card">
+                        <div class="founder-card interactive-guide">
                             <div class="founder-image-wrapper">
                                 <img src="images/founder_vishnu.png" alt="Vishnu Chakravarthy" class="founder-image">
                             </div>
-                            <h3>Vishnu Chakravarthy</h3>
-                            <p class="founder-role">Yoga & Fitness Expert</p>
+                            <div class="founder-info">
+                                <h3>Vishnu Chakravarthy</h3>
+                                <p class="founder-role">Yoga & Fitness Expert</p>
+                            </div>
+                            <div class="founder-hover-state">
+                                <ul class="founder-credentials">
+                                    <li>E-RYT 500 Certified</li>
+                                    <li>Ashtanga Lineage Specialist</li>
+                                    <li>Functional Mobility Instructor</li>
+                                </ul>
+                                <button class="secondary-btn">View Schedule</button>
+                            </div>
                         </div>
-                        <div class="founder-card">
+                        <div class="founder-card interactive-guide">
                             <div class="founder-image-wrapper">
                                 <img src="images/founder_amruta.png" alt="Amruta Sinkar" class="founder-image">
                             </div>
-                            <h3>Amruta Sinkar</h3>
-                            <p class="founder-role">Naturopathy & Wellness Guide</p>
+                            <div class="founder-info">
+                                <h3>Amruta Sinkar</h3>
+                                <p class="founder-role">Naturopathy & Wellness Guide</p>
+                            </div>
+                            <div class="founder-hover-state">
+                                <ul class="founder-credentials">
+                                    <li>Doctor of Naturopathy</li>
+                                    <li>Somatic Release Therapist</li>
+                                    <li>Holistic Nutritionist</li>
+                                </ul>
+                                <button class="secondary-btn">View Schedule</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -171,7 +317,7 @@
         <section id="invitation" class="journey-section">
             <div class="content-wrapper align-center">
                 <div class="glass-panel reveal slide-up">
-                    <span class="eyebrow">07. Connect</span>
+                    <span class="eyebrow">06. Connect</span>
                     <h2 class="section-title">Begin Your Journey</h2>
                     <p class="body-text">Step into a space designed for your evolution.</p>
                     <button class="primary-btn">Schedule a Visit</button>
@@ -293,6 +439,39 @@
             </div>
         </div>
     </footer>
+
+    <!-- Mobile Bottom Navigation -->
+    <nav class="mobile-bottom-nav">
+        <a href="#hero" class="mob-nav-item active">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                <polyline points="9 22 9 12 15 12 15 22" />
+            </svg>
+            <span>Home</span>
+        </a>
+        <a href="#programs" class="mob-nav-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="3" width="7" height="7" />
+                <rect x="14" y="3" width="7" height="7" />
+                <rect x="14" y="14" width="7" height="7" />
+                <rect x="3" y="14" width="7" height="7" />
+            </svg>
+            <span>Programs</span>
+        </a>
+        <a href="#sessions" class="mob-nav-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polygon points="5 3 19 12 5 21 5 3" />
+            </svg>
+            <span>Library</span>
+        </a>
+        <a href="#founders" class="mob-nav-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                <circle cx="12" cy="7" r="4" />
+            </svg>
+            <span>Guides</span>
+        </a>
+    </nav>
 
     <!-- Scripts -->
     <script src="js/script.js"></script>
